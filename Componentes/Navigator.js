@@ -10,12 +10,23 @@ export default function Navigator() {
 
 
   const [login, setLogin] = useState(false);
+  const [data, setData] = useState({});
 
   const CheckLogin = async () => {
     const ftch = await fetch('/api/checkLogin');
     const data = await ftch.json();
     console.log(data.login);
     setLogin(data.login)
+  }
+
+  const dataUser = async () => {
+
+    if (login) {
+      const ftch = await fetch('/api/getAccount')
+      const data = await ftch.json();
+      setData(data)
+      // console.log(data)
+    }
   }
 
   const Logout = async () => {
@@ -28,14 +39,19 @@ export default function Navigator() {
 
   useEffect(() => {
     CheckLogin();
+    dataUser();
   }, []);
+
+  useEffect(() => {
+    dataUser();
+  }, [login]);
 
   return (
     <Navbar isBordered>
       <NavbarContent justify="start">
         <NavbarBrand className="mr-4">
           <Logo />
-          <p className="hidden sm:block font-bold text-inherit">Propinas App</p>
+          <p className=" sm:block font-bold text-inherit">Propinas App</p>
         </NavbarBrand>
         <NavbarContent className="hidden sm:flex gap-3">
           <NavbarItem>
@@ -90,15 +106,21 @@ export default function Navigator() {
               </DropdownTrigger>
               <DropdownMenu aria-label="Profile Actions" variant="flat">
                 <DropdownItem key="profile" className="h-14 gap-2">
-                  <p className="font-semibold">Signed in as</p>
-                  <p className="font-semibold">zoey@example.com</p>
+                  <p className="font-semibold">Tu cuenta es</p>
+                  {
+                    (data.dt != undefined)?
+                    
+                  <p className="font-semibold">{data.dt.email}</p>
+                  :
+                  <></>
+                  }
                 </DropdownItem>
-                <DropdownItem key="settings">My Settings</DropdownItem>
-                <DropdownItem key="team_settings">Team Settings</DropdownItem>
-                <DropdownItem key="analytics">Analytics</DropdownItem>
+                <DropdownItem key="settings">Configuración</DropdownItem>
+                <DropdownItem key="team_settings"><Link href={"/"+data.nameSite}>Sitio</Link></DropdownItem>
+                {/* <DropdownItem key="analytics">Analytics</DropdownItem>
                 <DropdownItem key="system">System</DropdownItem>
                 <DropdownItem key="configurations">Configurations</DropdownItem>
-                <DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem>
+                <DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem> */}
                 <DropdownItem key="logout" color="danger" onPress={() => Logout()}>
                   Log Out
                 </DropdownItem>

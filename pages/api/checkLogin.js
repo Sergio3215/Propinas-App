@@ -7,7 +7,7 @@ export default function handler(req, res) {
         const token = req.cookies.Token
             
         const tokenVerify = jwt.verify(token,process.env.secretWord);
-        console.log(tokenVerify);
+        // console.log(tokenVerify);
         login = true;
     }
     catch(e){
