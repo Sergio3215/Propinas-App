@@ -1,5 +1,3 @@
-import { getFirestore, collection, getDocs, getDoc, addDoc, updateDoc, doc, deleteDoc, query, where } from "firebase/firestore";
-import { db, firebase, app } from '../../db/firebase'
 const bcrypt = require('bcryptjs');
 
 

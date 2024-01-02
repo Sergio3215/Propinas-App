@@ -124,11 +124,12 @@ export default function SignIn() {
     // console.log(errorMessage)
     return (
         <>
-            <Button onPress={onOpen} color="primary">Registrarse</Button>
+            <Button onPress={onOpen} color="secondary" variant='ghost'>Registrarse</Button>
             <Modal
                 isOpen={isOpen}
                 onOpenChange={onOpenChange}
                 placement="top-center"
+                backdrop='blur'
             >
                 <ModalContent>
                     {(onClose) => (
@@ -193,7 +194,7 @@ export default function SignIn() {
                                 <Button color="danger" variant="flat" onPress={onClose}>
                                     Close
                                 </Button>
-                                <Button color="primary" onPress={()=>{onClose;SubmitHandler()}}>
+                                <Button color="success" onPress={()=>{onClose;SubmitHandler()}}>
                                     Registrarse
                                 </Button>
                             </ModalFooter>

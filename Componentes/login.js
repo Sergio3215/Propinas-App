@@ -53,11 +53,12 @@ export default function Login() {
 
     return (
         <>
-        <Button onPress={onOpen} color="primary">Iniciar Sesion</Button>
+        <Button onPress={onOpen} color="success" variant="ghost">Iniciar Sesion</Button>
         <Modal 
           isOpen={isOpen} 
           onOpenChange={onOpenChange}
           placement="top-center"
+          backdrop='blur'
         >
           <ModalContent>
             {(onClose) => (
@@ -95,7 +96,7 @@ export default function Login() {
                   <Button color="danger" variant="flat" onPress={onClose}>
                     Cerrar
                   </Button>
-                  <Button color="primary" onPress={()=>{onClose;SubmitHandler()}}>
+                  <Button color="success" onPress={()=>{onClose;SubmitHandler()}}>
                   Iniciar Sesion
                   </Button>
                 </ModalFooter>
