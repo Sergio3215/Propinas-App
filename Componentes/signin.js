@@ -130,6 +130,7 @@ export default function SignIn() {
                 onOpenChange={onOpenChange}
                 placement="top-center"
                 backdrop='blur'
+                scrollBehavior="inside"
             >
                 <ModalContent>
                     {(onClose) => (

@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import '../public/global.css';
+import '../public/logo.png';
 import { NextUIProvider } from '@nextui-org/react'
 
 function MyApp({ Component, pageProps }) {
@@ -11,6 +12,8 @@ function MyApp({ Component, pageProps }) {
         <meta name="theme-color" />
         <meta name="description" content="Propinas App brinda el servicio para puntuar a colaboradores, rankear entre los mejores locales, y tener feedback directo de los clientes" />
         <title>Propina App</title>
+        <link rel="icon" type="image/x-icon" href="/logo.png" alt="Propinas App" />
+        {/* <script src="https://flow.microsoft.com/Content/msflowsdk-1.1.js"></script> */}
       </Head>
       <NextUIProvider>
         <main className="dark text-foreground bg-background">

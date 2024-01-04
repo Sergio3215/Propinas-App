@@ -1,7 +1,7 @@
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, Image, Input, Avatar } from "@nextui-org/react";
 import { useState, useEffect } from "react";
 
-export default function Setting({ isOpen, onOpenChange }) {
+export default function Setting({ isOpen, onOpenChange, profileImage, dataAccount }) {
 
     const [image, setImage] = useState("");
     const [name, setName] = useState("");
@@ -13,27 +13,45 @@ export default function Setting({ isOpen, onOpenChange }) {
     const [myFile, setFile] = useState({});
     const [FileBase, setFileBase] = useState("");
 
-    const getAccount = async () => {
-        const ftch = await fetch('/api/getAccount')
-        const data = await ftch.json();
-        // console.log(data)
-        setName(data.dt.name);
-        setLastName(data.dt.lastname);
-        setAccount(data.dt.account);
-        setNameSite(data.nameSite);
-        setId(data.dt.id);
-        setEmail(data.dt.email);
 
-        if(data.file !== ""){
-            setFileBase(data.file);
-            setImage(data.file);
+    // const GetImage = () => {
+    //     fetch('/api/getImageProfile')
+    //       .then(res => res.json())
+    //       .then(data => {
+    //         // console.log(data.file);
+    //         setImage(data.file);
+    //         setFileBase(data.file);
+    //       })
+    //   }
+
+    const getAccount = async () => {
+        // const ftch = await fetch('/api/getAccount')
+        // const data = await ftch.json();
+        // console.log(data)
+
+        console.log(dataAccount);
+        if (dataAccount.dt !== undefined) {
+            let data = dataAccount;
+            setName(data.dt.name);
+            setLastName(data.dt.lastname);
+            setAccount(data.dt.account);
+            setNameSite(data.nameSite);
+            setId(data.dt.id);
+            setEmail(data.dt.email);
         }
+
+        // if(data.file !== ""){
+        //     setFileBase(data.file);
+        //     setImage(data.file);
+        // }
     }
 
     useEffect(() => {
+        // GetImage();
         getAccount();
-    }, []);
+    }, [dataAccount]);
 
+    // console.log(profileImage);
 
     const getBase64 = (file) => {
         if (file != undefined) {
@@ -120,7 +138,7 @@ export default function Setting({ isOpen, onOpenChange }) {
                                     fontSize: "480%",
                                     marginLeft: "45px"
                                 }}
-                                src={(FileBase == '') ? image : FileBase}
+                                src={(FileBase == '') ? profileImage : FileBase}
                                 id="img---profile"
                             // src="https://nextui-docs-v2.vercel.app/images/hero-card-complete.jpeg"
                             />

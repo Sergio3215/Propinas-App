@@ -33,7 +33,7 @@ export default function Login() {
             let ftch = await fetch(`/api/login?email=${email}&password=${password}`);
             let data = await ftch.json();
 
-            console.log(data)
+            // console.log(data)
 
             if(ftch.status == 200){
                 // localStorage.setItem('token',data.token)
@@ -59,6 +59,7 @@ export default function Login() {
           onOpenChange={onOpenChange}
           placement="top-center"
           backdrop='blur'
+          scrollBehavior="inside"
         >
           <ModalContent>
             {(onClose) => (

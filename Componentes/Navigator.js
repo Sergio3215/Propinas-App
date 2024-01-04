@@ -14,23 +14,34 @@ export default function Navigator() {
 
   const [login, setLogin] = useState(false);
   const [data, setData] = useState({});
+  const [image, setImage] = useState("");
 
   const CheckLogin = async () => {
     const ftch = await fetch('/api/checkLogin');
     const data = await ftch.json();
-    console.log(data.login);
+    // console.log(data.login);
     setLogin(data.login)
+  }
+
+  const GetImage = () => {
+    fetch('/api/getImageProfile')
+      .then(res => res.json())
+      .then(data => {
+        // console.log(data.file);
+        setImage(data.file);
+      })
   }
 
   const dataUser = async () => {
 
     if (login) {
+      GetImage();
       const ftch = await fetch('/api/getAccount')
       const data = await ftch.json();
-      console.log(data)
+      // console.log(data)
       // data.file = btoa(unescape(encodeURIComponent(data.file)));
       setData(data)
-      console.log(data)
+      // console.log(data);
     }
   }
 
@@ -45,6 +56,8 @@ export default function Navigator() {
   useEffect(() => {
     CheckLogin();
     dataUser();
+    document.querySelector("body").style.width = innerWidth + "px";
+    window.addEventListener("resize", () => document.querySelector("body").style.width = innerWidth + "px")
   }, []);
 
   useEffect(() => {
@@ -105,12 +118,12 @@ export default function Navigator() {
                     as="button"
                     className="transition-transform"
                     color="secondary"
-                    name={(data.dt == undefined) ? "" : data.dt.name.substring(0, 1).toUpperCase()+data.dt.lastname.substring(0, 1).toUpperCase()}
+                    name={(data.dt == undefined) ? "" : data.dt.name.substring(0, 1).toUpperCase() + data.dt.lastname.substring(0, 1).toUpperCase()}
                     size="sm"
-                    src={(data.file != "")?data.file:""}
-                    //"data:image/jpeg;base64,/"+
-                    // src="https://nextui-docs-v2.vercel.app/images/hero-card-complete.jpeg"
-                    
+                    src={(image != "") ? image : ""}
+                  //"data:image/jpeg;base64,/"+
+                  // src="https://nextui-docs-v2.vercel.app/images/hero-card-complete.jpeg"
+
                   />
                 </DropdownTrigger>
                 <DropdownMenu aria-label="Profile Actions" variant="flat">
@@ -142,7 +155,7 @@ export default function Navigator() {
           }
         </NavbarContent>
       </Navbar>
-      <Setting onOpenChange={onOpenChange} isOpen={isOpen}/>
+      <Setting onOpenChange={onOpenChange} isOpen={isOpen} profileImage={image} dataAccount={data}/>
     </>
   );
 }
