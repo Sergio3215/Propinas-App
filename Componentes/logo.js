@@ -9,7 +9,7 @@ export const Logo = () => {
   },[])
 
   return (
-    <Image width={"50px"} height={"50px"} style={{ marginRight: 20 + "px" }} src={(urlOrigin.includes("localhost"))?"/logo.png":urlOrigin+"/logo.png"} />
+    <Image alt={"Propinas App Logo"} width={"50px"} height={"50px"} style={{ marginRight: 20 + "px" }} src={(urlOrigin.includes("localhost"))?"/logo.png":urlOrigin+"/logo.png"} />
 
     // <svg fill="none" height="36" viewBox="0 0 32 32" width="36">
     //   <path
