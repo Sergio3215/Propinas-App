@@ -2,7 +2,7 @@ import React from "react";
 import { Image } from "@nextui-org/react";
 export const Logo = () => (
 
-  <Image width={"50px"} height={"50px"} style={{marginRight:20+"px"}}src="/logo.png"/>
+  <Image width={"50px"} height={"50px"} style={{marginRight:20+"px"}}src={location.origin+"/logo.png"}/>
 
   // <svg fill="none" height="36" viewBox="0 0 32 32" width="36">
   //   <path
