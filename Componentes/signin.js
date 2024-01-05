@@ -125,84 +125,89 @@ export default function SignIn() {
     return (
         <>
             <Button onPress={onOpen} color="secondary" variant='ghost'>Registrarse</Button>
-            <Modal
-                isOpen={isOpen}
-                onOpenChange={onOpenChange}
-                placement="top-center"
-                backdrop='blur'
-                scrollBehavior="inside"
-            >
-                <ModalContent>
-                    {(onClose) => (
-                        <>
-                            <ModalHeader className="flex flex-col gap-1"></ModalHeader>
-                            <ModalBody>
-                                <Input
-                                    autoFocus
-                                    label="Nombre"
-                                    placeholder="Ingresa tu Nombre"
-                                    variant="bordered"
-                                    onChange={(e) => setName(e.target.value)}
-                                />
-                                <Input
-                                    label="Apellido"
-                                    placeholder="Ingresa tu Apellido"
-                                    variant="bordered"
-                                    onChange={(e) => setLastName(e.target.value)}
-                                />
-                                <Input
-                                    label="Cuenta"
-                                    placeholder="Ingresa tu Cuenta"
-                                    variant="bordered"
-                                    onChange={(e) => setAccount(e.target.value)}
-                                />
-                                <Input
-                                    label="Contraseña"
-                                    placeholder="Ingresa tu contraseña"
-                                    variant="bordered"
-                                    type='password'
-                                    onChange={(e) => setPassword(e.target.value)}
-                                />
-                                <label style={{ marginTop: "-10px" }}>6 caracteres o mas, incluir mayuscula y caracteres especiales @ ? ! - _</label>
-                                <Input
-                                    label="Confirmar Contraseña"
-                                    placeholder="Ingresa tu contraseña de nuevo"
-                                    variant="bordered"
-                                    type='password'
-                                    onChange={(e) => setConfirmPassword(e.target.value)}
-                                />
-                                <Input
-                                    label="Email"
-                                    placeholder="Ingresa tu email"
-                                    variant="bordered"
-                                    onChange={(e) => setEmail(e.target.value)}
-                                />
-                                <Input
-                                    label="Confirmar Email"
-                                    placeholder="Ingresa tu email de nuevo"
-                                    variant="bordered"
-                                    onChange={(e) => setConfirmEmail(e.target.value)} 
-                                />
-                                <Input
-                                    label="Nombre del Sitio"
-                                    placeholder="Ingresa tu nombre del sitio"
-                                    variant="bordered"
-                                    onChange={(e) => setSitioName(e.target.value)} 
-                                />
-                            </ModalBody>
-                            <ModalFooter>
-                                <>{(errorMessage.message != undefined) ? errorMessage.message.split('\n').map(msg => <div key="1">{msg}</div>) : <></>}</>
-                                <Button color="danger" variant="flat" onPress={onClose}>
-                                    Close
-                                </Button>
-                                <Button color="success" onPress={()=>{onClose;SubmitHandler()}}>
-                                    Registrarse
-                                </Button>
-                            </ModalFooter>
-                        </>
-                    )}
-                </ModalContent>
-            </Modal>
+            {
+                (isOpen) ?
+                    <Modal
+                        isOpen={isOpen}
+                        onOpenChange={onOpenChange}
+                        placement="top-center"
+                        backdrop='blur'
+                        scrollBehavior="inside"
+                    >
+                        <ModalContent>
+                            {(onClose) => (
+                                <>
+                                    <ModalHeader className="flex flex-col gap-1"></ModalHeader>
+                                    <ModalBody className='flex items-center'>
+                                        <Input
+                                            autoFocus
+                                            label="Nombre"
+                                            placeholder="Ingresa tu Nombre"
+                                            variant="bordered"
+                                            onChange={(e) => setName(e.target.value)}
+                                        />
+                                        <Input
+                                            label="Apellido"
+                                            placeholder="Ingresa tu Apellido"
+                                            variant="bordered"
+                                            onChange={(e) => setLastName(e.target.value)}
+                                        />
+                                        <Input
+                                            label="Cuenta"
+                                            placeholder="Ingresa tu Cuenta"
+                                            variant="bordered"
+                                            onChange={(e) => setAccount(e.target.value)}
+                                        />
+                                        <Input
+                                            label="Contraseña"
+                                            placeholder="Ingresa tu contraseña"
+                                            variant="bordered"
+                                            type='password'
+                                            onChange={(e) => setPassword(e.target.value)}
+                                        />
+                                        <label style={{ marginTop: "-10px" }}>6 caracteres o mas, incluir mayuscula y caracteres especiales @ ? ! - _</label>
+                                        <Input
+                                            label="Confirmar Contraseña"
+                                            placeholder="Ingresa tu contraseña de nuevo"
+                                            variant="bordered"
+                                            type='password'
+                                            onChange={(e) => setConfirmPassword(e.target.value)}
+                                        />
+                                        <Input
+                                            label="Email"
+                                            placeholder="Ingresa tu email"
+                                            variant="bordered"
+                                            onChange={(e) => setEmail(e.target.value)}
+                                        />
+                                        <Input
+                                            label="Confirmar Email"
+                                            placeholder="Ingresa tu email de nuevo"
+                                            variant="bordered"
+                                            onChange={(e) => setConfirmEmail(e.target.value)}
+                                        />
+                                        <Input
+                                            label="Nombre del Sitio"
+                                            placeholder="Ingresa tu nombre del sitio"
+                                            variant="bordered"
+                                            onChange={(e) => setSitioName(e.target.value)}
+                                        />
+                                    </ModalBody>
+                                    <ModalFooter>
+                                        <>{(errorMessage.message != undefined) ? errorMessage.message.split('\n').map(msg => <div key="1">{msg}</div>) : <></>}</>
+                                        <Button color="danger" variant="flat" onPress={onClose}>
+                                            Close
+                                        </Button>
+                                        <Button color="success" onPress={() => { onClose; SubmitHandler() }}>
+                                            Registrarse
+                                        </Button>
+                                    </ModalFooter>
+                                </>
+                            )}
+                        </ModalContent>
+                    </Modal>
+                    :
+                    <></>
+            }
         </>
     );
 }
