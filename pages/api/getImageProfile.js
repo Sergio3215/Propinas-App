@@ -19,12 +19,10 @@ export default async function handler (req, res) {
         });
     
         const data = await ftch.json();
-        // console.log(data);
     
         res.json({ file:data.file})
     }
     catch(err){
-        // console.log(err);
         res.json({ file:''})
     }
 }

@@ -138,7 +138,7 @@ export default function SignIn() {
                             {(onClose) => (
                                 <>
                                     <ModalHeader className="flex flex-col gap-1"></ModalHeader>
-                                    <ModalBody className='flex items-center'>
+                                    <ModalBody>
                                         <Input
                                             autoFocus
                                             label="Nombre"

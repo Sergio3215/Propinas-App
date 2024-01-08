@@ -30,7 +30,7 @@ export default function Login() {
         setErrorMessage("")
       }
 
-      let ftch = await fetch(`/api/login?email=${email}&password=${password}`);
+      let ftch = await fetch(`${location.origin}/api/login?email=${email}&password=${password}`);
       let data = await ftch.json();
 
       // console.log(data)
@@ -89,7 +89,7 @@ export default function Login() {
                       onChange={(e) => setPassword(e.target.value)}
                     />
                     <div className="flex py-2 px-1 justify-between">
-                      <Link color="primary" href="#" size="sm">
+                      <Link color="primary" href={location.origin+"/forgotpassword"} size="sm">
                         ¿Olvidaste tu contraseña?
                       </Link>
                     </div>
