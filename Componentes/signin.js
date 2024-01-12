@@ -124,13 +124,13 @@ export default function SignIn() {
     // console.log(errorMessage)
     return (
         <>
-            <Button onPress={onOpen} color="secondary" variant='ghost'>Registrarse</Button>
+            <Button onClick={onOpen} color="secondary" variant='ghost'>Registrarse</Button>
             {
                 (isOpen) ?
                     <Modal
                         isOpen={isOpen}
                         onOpenChange={onOpenChange}
-                        placement="top-center"
+                        placement="bottom-center"
                         backdrop='blur'
                         scrollBehavior="inside"
                     >

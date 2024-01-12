@@ -79,6 +79,7 @@ export default function ForgotPassword(req, res, next) {
                                         <Input
                                             onChange={(e) => setEmail(e.target.value)}
                                             type="email" label="Email"
+                                            isInvalid = {!(errorMessage == "")}
                                             errorMessage={errorMessage}
                                             style={
                                                 {

@@ -148,6 +148,7 @@ export default function ForgotByID() {
                                             style={
                                                 Style.input
                                             }
+                                            isInvalid = {!(errorMessage == "")}
                                             errorMessage={errorMessage}
                                         />
                                         <Input
@@ -157,6 +158,7 @@ export default function ForgotByID() {
                                             style={
                                                 Style.input
                                             }
+                                            isInvalid = {!(errorMessage == "")}
                                         />
                                     </CardBody>
                                     <Divider />

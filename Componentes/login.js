@@ -53,13 +53,13 @@ export default function Login() {
 
   return (
     <>
-      <Button onPress={onOpen} color="success" variant="ghost">Iniciar Sesion</Button>
+      <Button onClick={onOpen} color="success" variant="ghost">Iniciar Sesion</Button>
       {
         (isOpen) ?
           <Modal
             isOpen={isOpen}
             onOpenChange={onOpenChange}
-            placement="top-center"
+            placement="bottom-center"
             backdrop='blur'
             scrollBehavior="inside"
           >
