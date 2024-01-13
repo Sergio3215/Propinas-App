@@ -16,15 +16,24 @@ export default function SignIn() {
     const [confirmemail, setConfirmEmail] = useState("");
     const [sitioName, setSitioName] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
+    const [blur, setBlur] = useState("");
     const router = useRouter();
 
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
-    useEffect(() => {
-        // let title = document.querySelector('head title').innerHTML;
-        // document.querySelector('head title').innerHTML = `Registro - ${title}`;
-    }, []);
+    
+  useEffect(() => {
+    setBlurFunc();
+    window.addEventListener("resize", setBlurFunc());
+  },[]);
 
+  const setBlurFunc = () =>{
+    let txtBlur = "";
+    if(innerWidth > 500){
+      txtBlur = 'blur'
+    }
+    setBlur(txtBlur);
+  }
 
     const SubmitHandler = async () => {
 
@@ -131,7 +140,7 @@ export default function SignIn() {
                         isOpen={isOpen}
                         onOpenChange={onOpenChange}
                         placement="bottom-center"
-                        backdrop='blur'
+                        backdrop={blur}
                         scrollBehavior="inside"
                     >
                         <ModalContent>

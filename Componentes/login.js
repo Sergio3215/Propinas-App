@@ -10,9 +10,23 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [sectionWidth, setSectionWidth] = useState(30);
   const [errorMessage, setErrorMessage] = useState("");
+  const [blur, setBlur] = useState("");
   const router = useRouter();
 
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
+  useEffect(() => {
+    setBlurFunc();
+    window.addEventListener("resize", setBlurFunc());
+  },[]);
+
+  const setBlurFunc = () =>{
+    let txtBlur = "";
+    if(innerWidth > 500){
+      txtBlur = 'blur'
+    }
+    setBlur(txtBlur);
+  }
 
   const SubmitHandler = async () => {
     // e.preventDefault();
@@ -60,7 +74,7 @@ export default function Login() {
             isOpen={isOpen}
             onOpenChange={onOpenChange}
             placement="bottom-center"
-            backdrop='blur'
+            backdrop={blur}
             scrollBehavior="inside"
           >
             <ModalContent>
