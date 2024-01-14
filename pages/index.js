@@ -15,7 +15,7 @@ export default function App() {
         const ftch = await fetch("/api/getAllUsers");
         const res = await ftch.json();
 
-        let data = JSON.parse(res.list.list)
+        let data = res.list;
 
         setData(data);
         setLoad(false);
@@ -57,7 +57,7 @@ export default function App() {
                                 alignContent: 'center',
                             }
                         }>
-                            <LoadSpinner color="danger"/>
+                            <LoadSpinner color="danger" />
                         </div>
                         :
                         <>
@@ -93,7 +93,8 @@ export default function App() {
                                                                         height={"100px"}
                                                                         style={{
                                                                             width: "200px",
-                                                                        }} />
+                                                                        }}
+                                                                        alt={dt.nameSite} />
                                                                 </>
                                                         }
                                                     </CardBody>

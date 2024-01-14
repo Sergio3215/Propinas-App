@@ -19,9 +19,11 @@ export default async function handler (req, res) {
         });
     
         const data = await ftch.json();
-        // console.log(data);
+        
+        let myData = JSON.parse(data.list);
+
     
-        res.json({ list:data})
+        res.json({ list:myData})
     }
     catch(err){
         console.log(err);

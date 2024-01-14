@@ -29,7 +29,7 @@ export default function Setting({ isOpen, onOpenChange, profileImage, dataAccoun
         // const data = await ftch.json();
         // console.log(data)
 
-        console.log(dataAccount);
+        // console.log(dataAccount);
         if (dataAccount.dt !== undefined) {
             let data = dataAccount;
             setName(data.dt.name);
