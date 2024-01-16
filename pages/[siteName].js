@@ -3,11 +3,13 @@ import Navigator from "../Componentes/Navigator";
 import { useEffect, useState } from "react";
 import { Avatar, Divider, Spacer } from "@nextui-org/react";
 import LoadSpinner from "../Componentes/Spinner";
+import BodySiteName from "../Componentes/bodySiteName";
 
 export default function siteName() {
 
     const [height, setHeight] = useState(0);
     const [dataObj, setDataObj] = useState({});
+    const [idAccount, setIdAccount] = useState({});
     const [load, setLoad] = useState(false);
 
     const router = useRouter();
@@ -51,8 +53,9 @@ export default function siteName() {
             const dt = await ftch.json();
             console.log(dt);
             setDataObj(dt);
+            setIdAccount(data.id);
         }
-        
+
         setLoad(false);
     }
 
@@ -82,9 +85,9 @@ export default function siteName() {
                     </div>
                     :
                     <>
-                    <div>
-                        <Navigator />
-                    </div>
+                        <div>
+                            <Navigator />
+                        </div>
 
                         <div style={{
                             height: height - 95,
@@ -110,23 +113,33 @@ export default function siteName() {
                                     src={(dataObj.image != "") ? dataObj.image : "/No Image Full.png"}
                                     id="img---profile"
                                 />
-                                <Spacer x="70px"/>
+                                <Spacer x="70px" />
                                 <div style={{
                                     display: 'flex',
                                     flexDirection: "column",
                                     justifyContent: "center"
                                 }}>
                                     <div style={{
-                                        fontSize: "56px"
+                                        fontSize: "2.5rem"
                                     }}>
-                                        {dataObj.account}
+                                        {
+                                            // dataObj.account
+                                            siteName
+                                        }
                                     </div>
-                                    <div>
+                                    <div style={{
+                                        fontSize: "1.5rem"
+                                    }}>
                                         {dataObj.name + " " + dataObj.lastname}
                                     </div>
                                 </div>
                             </div>
-                            {/* <Divider /> */}
+                            <Spacer y="20px" />
+                            {/* 416 px */}
+                            <div className="max-w-screen-md min-w-unit-2xl w-2/4 relative left-1/4">
+                                <Divider className="my-4" />
+                                <BodySiteName />
+                            </div>
                         </div>
                     </>
             }
