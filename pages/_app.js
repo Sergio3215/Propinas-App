@@ -2,6 +2,7 @@ import Head from 'next/head'
 import '../public/global.css';
 import '../public/logo.png';
 import '../public/No Image.png';
+import '../public/No Image Full.png';
 import { NextUIProvider } from '@nextui-org/react'
 
 function MyApp({ Component, pageProps }) {
