@@ -120,7 +120,7 @@ export default function siteName() {
                                     justifyContent: "center"
                                 }}>
                                     <div style={{
-                                        fontSize: "45px"
+                                        fontSize: "25px"
                                     }}>
                                         {
                                             // dataObj.account
@@ -128,7 +128,7 @@ export default function siteName() {
                                         }
                                     </div>
                                     <div style={{
-                                        fontSize: "25px"
+                                        fontSize: "15px"
                                     }}>
                                         {dataObj.name + " " + dataObj.lastname}
                                     </div>
