@@ -92,7 +92,7 @@ export default function siteName() {
                         <div style={{
                             height: height - 95,
                             color: 'white',
-                        }}>
+                        }} className="lg:max-w-screen-sm lg:min-w-unit-5xl w-2/4 relative lg:left-1/4 lmb:left-unit-xl lmb:min-w-unit-7xl">
                             <Spacer y="30px" />
                             <div style={{
                                 display: 'flex',
@@ -136,7 +136,7 @@ export default function siteName() {
                             </div>
                             <Spacer y="20px" />
                             {/* 416 px */}
-                            <div className="max-w-screen-sm min-w-unit-4xl w-2/4 relative left-1/3">
+                            <div className="">
                                 <Divider className="my-4" />
                                 <BodySiteName />
                             </div>
