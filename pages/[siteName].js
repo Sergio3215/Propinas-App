@@ -113,7 +113,7 @@ export default function siteName() {
                                     src={(dataObj.image != "") ? dataObj.image : "/No Image Full.png"}
                                     id="img---profile"
                                 />
-                                <Spacer x="70px" />
+                                <Spacer x="20px" />
                                 <div style={{
                                     display: 'flex',
                                     flexDirection: "column",
