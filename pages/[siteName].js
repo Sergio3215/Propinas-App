@@ -120,7 +120,7 @@ export default function siteName() {
                                     justifyContent: "center"
                                 }}>
                                     <div style={{
-                                        fontSize: "2.5rem"
+                                        fontSize: "45px"
                                     }}>
                                         {
                                             // dataObj.account
@@ -128,7 +128,7 @@ export default function siteName() {
                                         }
                                     </div>
                                     <div style={{
-                                        fontSize: "1.5rem"
+                                        fontSize: "25px"
                                     }}>
                                         {dataObj.name + " " + dataObj.lastname}
                                     </div>
@@ -136,7 +136,7 @@ export default function siteName() {
                             </div>
                             <Spacer y="20px" />
                             {/* 416 px */}
-                            <div className="max-w-screen-md min-w-unit-2xl w-2/4 relative left-1/4">
+                            <div className="max-w-screen-sm min-w-unit-4xl w-2/4 relative left-1/3">
                                 <Divider className="my-4" />
                                 <BodySiteName />
                             </div>
