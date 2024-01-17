@@ -18,6 +18,10 @@ module.exports = {
         // => @media (min-width: 140px) { ... }
         'mb': '240px',
         // => @media (min-width: 240px) { ... }
+
+        'cmb': '320px',
+        // => @media (min-width: 320px) { ... }
+
         'lmb': '454px',
         // => @media (min-width: 454px) { ... }
         'sm': '684px',
@@ -26,7 +30,16 @@ module.exports = {
         'md': '960px',
         // => @media (min-width: 960px) { ... }
 
+        'os': '1024px',
+        // => @media (min-width: 1024px) { ... }
+
+        'ws': '1280px',
+        // => @media (min-width: 1280px) { ... }
+
         'lg': '1440px',
+        // => @media (min-width: 1440px) { ... }
+
+        'xlg': '1920px',
         // => @media (min-width: 1440px) { ... }
       },
     }

@@ -92,7 +92,7 @@ export default function siteName() {
                         <div style={{
                             height: height - 95,
                             color: 'white',
-                        }} className="lg:max-w-screen-sm lg:min-w-unit-5xl w-2/4 relative lg:left-1/4 lmb:left-unit-xl lmb:min-w-unit-7xl">
+                        }} className=" w-10/12 relative max-w-screen-sm min-w-unit-5xl xlg:left-1/3 md:left-1/4 sm:left-1/4 lmb:left-unit-xl cmb:left-9">
                             <Spacer y="30px" />
                             <div style={{
                                 display: 'flex',
