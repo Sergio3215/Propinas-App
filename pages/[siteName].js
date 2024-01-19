@@ -8,8 +8,10 @@ import BodySiteName from "../Componentes/bodySiteName";
 export default function siteName() {
 
     const [height, setHeight] = useState(0);
+    const [width, setWidth] = useState(0);
     const [dataObj, setDataObj] = useState({});
-    const [idAccount, setIdAccount] = useState({});
+    const [idAccount, setIdAccount] = useState("");
+    const [idSite, setSite] = useState("");
     const [load, setLoad] = useState(false);
 
     const router = useRouter();
@@ -19,6 +21,7 @@ export default function siteName() {
     useEffect(() => {
         setLoad(true);
         setHeight(innerHeight);
+        setWidth(innerWidth);
         window.addEventListener('resize', () => {
             setHeight(innerHeight);
         });
@@ -39,6 +42,8 @@ export default function siteName() {
             });
 
         const data = await fetchStr.json();
+
+        setSite(data.id_site);
 
         if (data.id != "") {
             const ftch = await fetch('https://prod-18.brazilsouth.logic.azure.com:443/workflows/6528524e7c7549929f31b9653005494e/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=9RkA6KFqDC9kdXo1FLYW4jWMq8UlL6Dc8lq8ESoqtVA',
@@ -119,26 +124,47 @@ export default function siteName() {
                                     flexDirection: "column",
                                     justifyContent: "center"
                                 }}>
-                                    <div style={{
-                                        fontSize: "25px"
-                                    }}>
-                                        {
-                                            // dataObj.account
-                                            siteName
-                                        }
-                                    </div>
-                                    <div style={{
-                                        fontSize: "15px"
-                                    }}>
-                                        {dataObj.name + " " + dataObj.lastname}
-                                    </div>
+                                    {
+                                        (siteName != undefined && width <= 500) ?
+                                            <>
+                                                <div style={{
+                                                    fontSize: (siteName.length < 10) ? "25px" : "1.2rem"
+                                                }}>
+                                                    {
+                                                        // dataObj.account
+                                                        siteName
+                                                    }
+                                                </div>
+                                                <div style={{
+                                                    fontSize: (siteName.length < 10) ? "15px" : "13.5px"
+                                                }}>
+                                                    {dataObj.name + " " + dataObj.lastname}
+                                                </div>
+                                            </>
+                                            :
+                                            <>
+                                                <div style={{
+                                                    fontSize: "25px"
+                                                }}>
+                                                    {
+                                                        // dataObj.account
+                                                        siteName
+                                                    }
+                                                </div>
+                                                <div style={{
+                                                    fontSize: "15px"
+                                                }}>
+                                                    {dataObj.name + " " + dataObj.lastname}
+                                                </div>
+                                            </>
+                                    }
                                 </div>
                             </div>
                             <Spacer y="20px" />
                             {/* 416 px */}
                             <div className="">
                                 <Divider className="my-4" />
-                                <BodySiteName />
+                                <BodySiteName idAccount={idAccount} idSite={idSite} />
                             </div>
                         </div>
                     </>
