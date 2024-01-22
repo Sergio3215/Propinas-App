@@ -78,7 +78,7 @@ export default function BodySiteName({ idAccount, idSite }) {
                     :
                     <>
 
-                        <Button onPress={onOpen} className="max-w-fit">Crear Colaborador</Button>
+                        <Button onPress={onOpen} shadow color="secondary" className="max-w-fit">Crear Colaborador</Button>
                         {
                             (data.length == 0) ?
                                 <div className="flex justify-center">
