@@ -40,13 +40,13 @@ export default function BodySiteName({ idAccount, idSite }) {
 
         setTimeout(() => {
             let userId = sessionStorage.getItem("idUser");
-            console.log(userId);
+            // console.log(userId);
             if (userId != null) {
                 setAccount(userId);
             }
 
             setLoad(false);
-        }, 500);
+        }, 1000);
 
     }
 

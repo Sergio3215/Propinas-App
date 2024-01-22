@@ -66,7 +66,7 @@ export default function siteName() {
 
     useEffect(() => {
         if (siteName != undefined) {
-            console.log(siteName);
+            // console.log(siteName);
             getProfile();
         }
     }, [siteName]);
