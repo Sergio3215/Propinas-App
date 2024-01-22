@@ -38,12 +38,15 @@ export default function Navigator() {
       GetImage();
       const ftch = await fetch('/api/getAccount')
       const data = await ftch.json();
-      // console.log(data)
-      // data.file = btoa(unescape(encodeURIComponent(data.file)));
       setData(data);
       sessionStorage.setItem('idUser', data.dt.id);
       // sessionStorage.setItem('dateLogged', new Date());
       // console.log(data);
+    }
+    else{
+      if(sessionStorage.getItem('idUser') !== null && sessionStorage.getItem('idUser') !== undefined){
+        sessionStorage.removeItem('idUser');
+      }
     }
   }
 
