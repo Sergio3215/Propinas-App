@@ -54,7 +54,7 @@ export default function BodySiteName({ idAccount, idSite }) {
         setLoad(true);
         setTimeout(() => {
             getData();
-        }, 2000);
+        }, 5000);
     }
 
     useEffect(() => {
