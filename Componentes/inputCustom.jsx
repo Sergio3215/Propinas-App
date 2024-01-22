@@ -1,5 +1,5 @@
 
-export default function InputCustomFile({ label, onChange, errorMessage, isInvalid, name, className }) {
+export default function InputCustomFile({ label, onChange, errorMessage, isInvalid, name }) {
 
     const Styled = {
         container: {
