@@ -7,6 +7,7 @@ export default function BodySiteName({ idAccount, idSite }) {
 
 
     const [data, setData] = useState([]);
+    const [account, setAccount] = useState({});
     const [load, setLoad] = useState(false);
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
@@ -50,14 +51,22 @@ export default function BodySiteName({ idAccount, idSite }) {
     useEffect(() => {
 
         if (idAccount != '') {
-
             setLoad(true);
-            // console.log(idAccount, idSite);
             getData();
         }
 
     }, [idAccount]);
 
+    useEffect(() => {
+        dataUser();
+    }, []);
+
+    const dataUser = async () => {
+        const ftch = await fetch('/api/getAccount')
+        const res = await ftch.json();
+        console.log(res.dt);
+        setAccount(res.dt);
+    }
 
     return (
         <>
@@ -77,8 +86,15 @@ export default function BodySiteName({ idAccount, idSite }) {
                     </div>
                     :
                     <>
-
-                        <Button onPress={onOpen} shadow color="secondary" className="max-w-fit">Crear Colaborador</Button>
+                        {
+                            (account != undefined) ?
+                                (account.id == idAccount) ?
+                                    <Button onPress={onOpen} shadow color="secondary" className="max-w-fit">Crear Colaborador</Button>
+                                    :
+                                    <></>
+                                :
+                                <></>
+                        }
                         {
                             (data.length == 0) ?
                                 <div className="flex justify-center">
