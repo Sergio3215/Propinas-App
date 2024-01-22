@@ -7,7 +7,7 @@ export default function BodySiteName({ idAccount, idSite }) {
 
 
     const [data, setData] = useState([]);
-    const [account, setAccount] = useState({});
+    const [account, setAccount] = useState('');
     const [load, setLoad] = useState(false);
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
@@ -28,24 +28,33 @@ export default function BodySiteName({ idAccount, idSite }) {
         let res = await ftc.json();
 
 
-        if (res.list != "[]") {
-            console.log(res.list);
+        if (res.list != "[]" && res.list != undefined) {
+            // console.log(res.list);
 
             res.list = JSON.parse(res.list);
 
-            console.log(res.list);
+            // console.log(res.list);
 
             setData(res.list);
         }
 
-        setLoad(false);
+        setTimeout(() => {
+            let userId = sessionStorage.getItem("idUser");
+            console.log(userId);
+            if (userId != null) {
+                setAccount(userId);
+            }
+
+            setLoad(false);
+        }, 500);
+
     }
 
     const ResetData = () => {
         setLoad(true);
         setTimeout(() => {
             getData();
-        }, 5000);
+        }, 2000);
     }
 
     useEffect(() => {
@@ -58,15 +67,13 @@ export default function BodySiteName({ idAccount, idSite }) {
     }, [idAccount]);
 
     useEffect(() => {
-        dataUser();
+
     }, []);
 
-    const dataUser = async () => {
-        const ftch = await fetch('/api/getAccount')
-        const res = await ftch.json();
-        console.log(res.dt);
-        setAccount(res.dt);
-    }
+    // useEffect(() => {
+    //     setLoad(true);
+    //     ResetData();
+    // }, [account]);
 
     return (
         <>
@@ -87,8 +94,8 @@ export default function BodySiteName({ idAccount, idSite }) {
                     :
                     <>
                         {
-                            (account != undefined) ?
-                                (account.id == idAccount) ?
+                            (account != '') ?
+                                (account == idAccount) ?
                                     <Button onPress={onOpen} shadow color="secondary" className="max-w-fit">Crear Colaborador</Button>
                                     :
                                     <></>

@@ -40,7 +40,9 @@ export default function Navigator() {
       const data = await ftch.json();
       // console.log(data)
       // data.file = btoa(unescape(encodeURIComponent(data.file)));
-      setData(data)
+      setData(data);
+      sessionStorage.setItem('idUser', data.dt.id);
+      // sessionStorage.setItem('dateLogged', new Date());
       // console.log(data);
     }
   }
@@ -49,6 +51,8 @@ export default function Navigator() {
     const ftch = await fetch('/api/logout');
 
     const data = await ftch.json();
+
+    sessionStorage.removeItem('idUser');
 
     location.href = location.href;
   }

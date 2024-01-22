@@ -7,8 +7,9 @@ export default function CreateColaborator({ isOpen, onOpenChange, ResetData, idA
     const [name, setName] = useState('');
     const [lastname, setLastName] = useState('');
     const [method, setMethod] = useState('');
-    const [myFile, setFile] = useState({});
+    const [myFile, setFile] = useState(undefined);
     const [FileBase, setFileBase] = useState("");
+    const [firstLoad, setFirstLoad] = useState(true);
 
     const getBase64 = (file) => {
         if (file != undefined) {
@@ -80,16 +81,26 @@ export default function CreateColaborator({ isOpen, onOpenChange, ResetData, idA
                                     label="Imagen"
                                     name="my-file"
                                     isInvalid={myFile == undefined}
-                                    errorMessage={(myFile == undefined) ? "No se cargo la imagen correctamente, vuelva a cargarla otra vez" : ""}
+                                    errorMessage={(myFile == undefined && !firstLoad) ? 
+                                        "No se cargo la imagen correctamente, vuelva a cargarla otra vez" : ""}
                                     onChange={(e) => {
                                         setFile(e.target.files[0]);
                                         getBase64(e.target.files[0]);
+                                        (firstLoad)? setFirstLoad(false) : setFirstLoad(false)
                                     }}
                                 />
                             </div>
                         </ModalBody>
                         <ModalFooter>
-                            <Button color="danger" variant="light" onPress={onClose}>
+                            <Button color="danger" variant="light" onPress={()=>{
+                                onClose();
+                                setName('');
+                                setLastName('');
+                                setMethod('');
+                                setFileBase('');
+                                setFile(undefined);
+                                setFirstLoad(true);
+                            }}>
                                 Close
                             </Button>
                             <Button color="success" onPress={() => {

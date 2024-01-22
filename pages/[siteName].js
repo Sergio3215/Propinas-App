@@ -56,7 +56,7 @@ export default function siteName() {
                 });
 
             const dt = await ftch.json();
-            console.log(dt);
+            // console.log(dt);
             setDataObj(dt);
             setIdAccount(data.id);
         }
