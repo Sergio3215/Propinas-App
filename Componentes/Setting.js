@@ -1,5 +1,6 @@
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, Image, Input, Avatar } from "@nextui-org/react";
 import { useState, useEffect } from "react";
+import InputCustomFile from "./inputCustom";
 
 export default function Setting({ isOpen, onOpenChange, profileImage, dataAccount }) {
 
@@ -142,7 +143,7 @@ export default function Setting({ isOpen, onOpenChange, profileImage, dataAccoun
                                 id="img---profile"
                             // src="https://nextui-docs-v2.vercel.app/images/hero-card-complete.jpeg"
                             />
-                            <Input
+                            <InputCustomFile
                                 type="file"
                                 onChange={(e) => {
                                     setFile(e.target.files[0]);
@@ -150,7 +151,6 @@ export default function Setting({ isOpen, onOpenChange, profileImage, dataAccoun
                                 }}
                                 isInvalid={myFile == undefined}
                                 errorMessage={(myFile == undefined) ? "No se cargo la imagen correctamente, vuelva a cargarla otra vez" : ""}
-                                className="FileInputImage"
                                 name="my-file"
                             />
                             <Input
