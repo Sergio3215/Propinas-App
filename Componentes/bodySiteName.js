@@ -38,7 +38,11 @@ export default function BodySiteName({ idAccount, idSite }) {
             setData(res.list);
         }
 
-        setTimeout(() => {
+        getUser();
+    }
+
+    let getUser = async () => {
+        new Promise(resolve => setTimeout(() => {
             let userId = sessionStorage.getItem("idUser");
             // console.log(userId);
             if (userId != null) {
@@ -46,8 +50,9 @@ export default function BodySiteName({ idAccount, idSite }) {
             }
 
             setLoad(false);
-        }, 2500);
 
+            resolve();
+        }, 1000))
     }
 
     const ResetData = () => {
