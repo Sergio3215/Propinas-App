@@ -46,7 +46,7 @@ export default function BodySiteName({ idAccount, idSite }) {
             }
 
             setLoad(false);
-        }, 1000);
+        }, 2500);
 
     }
 
