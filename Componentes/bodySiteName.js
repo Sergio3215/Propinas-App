@@ -75,11 +75,6 @@ export default function BodySiteName({ idAccount, idSite }) {
 
     }, []);
 
-    // useEffect(() => {
-    //     setLoad(true);
-    //     ResetData();
-    // }, [account]);
-
     return (
         <>
             {
@@ -101,7 +96,10 @@ export default function BodySiteName({ idAccount, idSite }) {
                         {
                             (account != '') ?
                                 (account == idAccount) ?
-                                    <Button onPress={onOpen} shadow color="secondary" className="max-w-fit">Crear Colaborador</Button>
+                                    <Button onPress={onOpen} shadow color="secondary"
+                                        className="max-w-fit mb-24">
+                                        Crear Colaborador
+                                    </Button>
                                     :
                                     <></>
                                 :
