@@ -3,6 +3,9 @@ import '../public/global.css';
 import '../public/logo.png';
 import '../public/No Image.png';
 import '../public/No Image Full.png';
+import '../public/icon_store.svg';
+import '../public/logo.svg';
+import '../public/icon_person.svg';
 import { NextUIProvider } from '@nextui-org/react'
 
 function MyApp({ Component, pageProps }) {

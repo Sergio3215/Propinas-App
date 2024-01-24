@@ -43,8 +43,8 @@ export default function Navigator() {
       // sessionStorage.setItem('dateLogged', new Date());
       // console.log(data);
     }
-    else{
-      if(sessionStorage.getItem('idUser') !== null && sessionStorage.getItem('idUser') !== undefined){
+    else {
+      if (sessionStorage.getItem('idUser') !== null && sessionStorage.getItem('idUser') !== undefined) {
         sessionStorage.removeItem('idUser');
       }
     }
@@ -147,9 +147,14 @@ export default function Navigator() {
                   <DropdownItem key="settings" onPress={onOpen}>
                     Configuración
                   </DropdownItem>
-                  <DropdownItem key="team_settings" onPress={() => location.href = "/" + data.nameSite}>
-                    Sitio
-                  </DropdownItem>
+                  {
+                    (data.nameSite == null) ?
+                      null
+                      :
+                      <DropdownItem key="team_settings" onPress={() => location.href = "/" + data.nameSite}>
+                        Sitio
+                      </DropdownItem>
+                  }
                   {/* <DropdownItem key="analytics">Analytics</DropdownItem>
                 <DropdownItem key="system">System</DropdownItem>
                 <DropdownItem key="configurations">Configurations</DropdownItem>
@@ -162,7 +167,7 @@ export default function Navigator() {
           }
         </NavbarContent>
       </Navbar>
-      <Setting onOpenChange={onOpenChange} isOpen={isOpen} profileImage={image} dataAccount={data}/>
+      <Setting onOpenChange={onOpenChange} isOpen={isOpen} profileImage={image} dataAccount={data} />
     </>
   );
 }

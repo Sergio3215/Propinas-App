@@ -65,45 +65,51 @@ export default function App() {
                                 data.map((dt, index) => {
                                     return (
                                         <>
-                                            <Link href={location.origin + "/" + dt.nameSite} className="mr-2 ml-4 mt-4 mb-2">
-                                                <Card shadow="sm" key={index} isPressable onPress={() => console.log("item pressed")}
-                                                    style={{
-                                                        width: "200px",
-                                                    }}
-                                                >
-                                                    <CardBody className="overflow-visible p-0">
-                                                        {
-                                                            (dt.image != "") ?
-                                                                <Image
-                                                                    shadow="sm"
-                                                                    radius="lg"
-                                                                    width="100%"
-                                                                    alt={dt.nameSite}
-                                                                    className="w-full object-cover h-[140px]"
-                                                                    src={dt.image}
-                                                                    height={"100px"}
-                                                                    style={{
-                                                                        width: "200px",
-                                                                        height: "206px"
-                                                                    }}
-                                                                />
-                                                                :
-                                                                <>
-                                                                    <NoImage
-                                                                        height={"100px"}
-                                                                        style={{
-                                                                            width: "200px",
-                                                                        }}
-                                                                        alt={dt.nameSite} />
-                                                                </>
-                                                        }
-                                                    </CardBody>
-                                                    <CardFooter className="text-small justify-between text-center">
-                                                        <b>{dt.nameSite}</b>
+                                            {
+                                                (dt.nameSite == null) ?
+                                                    <></>
+                                                    :
+                                                    <Link href={location.origin + "/" + dt.nameSite} className="mr-2 ml-4 mt-4 mb-2">
+                                                        <Card shadow="sm" key={index} isPressable onPress={() => console.log("item pressed")}
+                                                            style={{
+                                                                width: "200px",
+                                                            }}
+                                                        >
+                                                            <CardBody className="overflow-visible p-0">
+                                                                {
+                                                                    (dt.image != "") ?
+                                                                        <Image
+                                                                            shadow="sm"
+                                                                            radius="lg"
+                                                                            width="100%"
+                                                                            alt={dt.nameSite}
+                                                                            className="w-full object-cover h-[140px]"
+                                                                            src={dt.image}
+                                                                            height={"100px"}
+                                                                            style={{
+                                                                                width: "200px",
+                                                                                height: "206px"
+                                                                            }}
+                                                                        />
+                                                                        :
+                                                                        <>
+                                                                            <NoImage
+                                                                                height={"100px"}
+                                                                                style={{
+                                                                                    width: "200px",
+                                                                                }}
+                                                                                alt={dt.nameSite} />
+                                                                        </>
+                                                                }
+                                                            </CardBody>
+                                                            <CardFooter className="text-small justify-between text-center">
+                                                                <b>{dt.nameSite}</b>
 
-                                                    </CardFooter>
-                                                </Card>
-                                            </Link>
+                                                            </CardFooter>
+                                                        </Card>
+                                                    </Link>
+                                            }
+
                                         </>
                                     )
                                 })

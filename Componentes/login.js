@@ -18,11 +18,11 @@ export default function Login() {
   useEffect(() => {
     setBlurFunc();
     window.addEventListener("resize", setBlurFunc());
-  },[]);
+  }, []);
 
-  const setBlurFunc = () =>{
+  const setBlurFunc = () => {
     let txtBlur = "";
-    if(innerWidth > 500){
+    if (innerWidth > 500) {
       txtBlur = 'blur'
     }
     setBlur(txtBlur);
@@ -91,6 +91,7 @@ export default function Login() {
                       placeholder="Ingresa tu email"
                       variant="bordered"
                       onChange={(e) => setEmail(e.target.value)}
+                      isInvalid={errorMessage != ''}
                     />
                     <Input
                       endContent={
@@ -101,19 +102,28 @@ export default function Login() {
                       type="password"
                       variant="bordered"
                       onChange={(e) => setPassword(e.target.value)}
+                      isInvalid={errorMessage != ''}
                     />
                     <div className="flex py-2 px-1 justify-between">
-                      <Link color="primary" href={location.origin+"/forgotpassword"} size="sm">
+                      <Link color="primary" href={location.origin + "/forgotpassword"} size="sm">
                         ¿Olvidaste tu contraseña?
                       </Link>
                     </div>
+                    <div style={{ color: 'red' }}>{errorMessage}</div>
                   </ModalBody>
                   <ModalFooter>
-                    <div>{errorMessage}</div>
-                    <Button color="danger" variant="flat" onPress={onClose}>
+                    <Button color="danger" variant="flat" onPress={() => {
+                      onClose();
+                      setEmail('');
+                      setPassword('');
+                      setErrorMessage('');
+                    }}>
                       Cerrar
                     </Button>
-                    <Button color="success" onPress={() => { onClose; SubmitHandler() }}>
+                    <Button color="success" onPress={() => {
+                      onClose;
+                      SubmitHandler();
+                    }}>
                       Iniciar Sesion
                     </Button>
                   </ModalFooter>

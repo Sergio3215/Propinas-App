@@ -177,14 +177,19 @@ export default function Setting({ isOpen, onOpenChange, profileImage, dataAccoun
                                 onChange={(e) => setAccount(e.target.value)}
                                 value={account}
                             />
-                            <Input
-                                label="Nombre Local"
-                                placeholder="Ingresa tu nombre del local"
-                                type="text"
-                                variant="bordered"
-                                onChange={(e) => setNameSite(e.target.value)}
-                                value={nameSite}
-                            />
+                            {
+                                (nameSite == null) ?
+                                    <></>
+                                    :
+                                    <Input
+                                        label="Nombre Local"
+                                        placeholder="Ingresa tu nombre del local"
+                                        type="text"
+                                        variant="bordered"
+                                        onChange={(e) => setNameSite(e.target.value)}
+                                        value={nameSite}
+                                    />
+                            }
                         </ModalBody>
                         <ModalFooter>
                             <Button color="danger" variant="light" onPress={onClose}>
