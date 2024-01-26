@@ -25,9 +25,9 @@ function MyApp({ Component, pageProps }) {
       <NextUIProvider>
         <main className="dark text-foreground bg-background">
           <Component {...pageProps} />
-          <Analytics />
         </main>
       </NextUIProvider>
+      <Analytics />
     </>
   )
 }
