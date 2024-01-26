@@ -7,7 +7,6 @@ import '../public/icon_store.svg';
 import '../public/logo.svg';
 import '../public/icon_person.svg';
 import { NextUIProvider } from '@nextui-org/react'
-import { Analytics } from '@vercel/analytics/react'
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -27,7 +26,6 @@ function MyApp({ Component, pageProps }) {
           <Component {...pageProps} />
         </main>
       </NextUIProvider>
-      <Analytics />
     </>
   )
 }
