@@ -1,6 +1,7 @@
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, Image, Input, Avatar } from "@nextui-org/react";
 import { useState, useEffect } from "react";
 import InputCustomFile from "./inputCustom";
+import QRCode from "react-qr-code";
 
 export default function Setting({ isOpen, onOpenChange, profileImage, dataAccount }) {
 
@@ -13,6 +14,7 @@ export default function Setting({ isOpen, onOpenChange, profileImage, dataAccoun
     const [email, setEmail] = useState("");
     const [myFile, setFile] = useState({});
     const [FileBase, setFileBase] = useState("");
+    const [originURL, setOriginURL] = useState("");
 
 
     // const GetImage = () => {
@@ -32,6 +34,7 @@ export default function Setting({ isOpen, onOpenChange, profileImage, dataAccoun
 
         // console.log(dataAccount);
         if (dataAccount.dt !== undefined) {
+            let url = window.location.origin;
             let data = dataAccount;
             setName(data.dt.name);
             setLastName(data.dt.lastname);
@@ -39,6 +42,7 @@ export default function Setting({ isOpen, onOpenChange, profileImage, dataAccoun
             setNameSite(data.nameSite);
             setId(data.dt.id);
             setEmail(data.dt.email);
+            setOriginURL(url+"/"+data.nameSite)
         }
 
         // if(data.file !== ""){
@@ -190,6 +194,7 @@ export default function Setting({ isOpen, onOpenChange, profileImage, dataAccoun
                                         value={nameSite}
                                     />
                             }
+                            <QRCode value={originURL} />
                         </ModalBody>
                         <ModalFooter>
                             <Button color="danger" variant="light" onPress={onClose}>

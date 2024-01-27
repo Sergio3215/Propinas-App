@@ -76,6 +76,11 @@ export default function Login() {
             placement="bottom-center"
             backdrop={blur}
             scrollBehavior="inside"
+            onClose = {() => {
+              setEmail('');
+              setPassword('');
+              setErrorMessage('');
+            }}
           >
             <ModalContent>
               {(onClose) => (

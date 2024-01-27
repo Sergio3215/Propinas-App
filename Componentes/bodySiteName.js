@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, useDisclosure } from "@nextui-org/react";
+import { Button, useDisclosure, Card, CardHeader, CardBody, Image } from "@nextui-org/react";
 import CreateColaborator from "./CreateColaborator";
 import LoadSpinner from "./Spinner";
 
@@ -13,25 +13,20 @@ export default function BodySiteName({ idAccount, idSite }) {
 
     const getData = async () => {
 
-        let myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-
-        let ftc = await fetch("https://prod-21.brazilsouth.logic.azure.com:443/workflows/6f8e7492709049188415b0af2d22f33f/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=DdTRr7bx_LnpNRBFxmjq1u853P2avDnPGcOdI7meuys",
-            {
-                method: "POST",
-                body: JSON.stringify({
-                    id: idSite
-                }),
-                headers: myHeaders
-            });
+        let ftc = await fetch("/api/getColabo?idSite=" + idSite);
 
         let res = await ftc.json();
-
 
         if (res.list != "[]" && res.list != undefined) {
             // console.log(res.list);
 
             res.list = JSON.parse(res.list);
+
+
+            res.list.map(dt => {
+                let img = "data:image/jpeg;base64," + dt.Image;
+                dt.Image = img;
+            })
 
             // console.log(res.list);
 
@@ -112,15 +107,33 @@ export default function BodySiteName({ idAccount, idSite }) {
                                 </div>
                                 :
                                 <>
-                                    {
-                                        data.map(dt => {
-                                            return (
-                                                <div>
-                                                    {dt.name}
-                                                </div>
-                                            )
-                                        })
-                                    }
+                                    <div className="flex">
+                                        {
+                                            data.map(dt => {
+                                                return (
+                                                    <Card className="py-4" style={{
+                                                        width: '40%',
+                                                        margin:"10px",
+                                                        paddingTop: '3px'
+                                                    }}>
+                                                        <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
+                                                            {/* <p className="text-tiny uppercase font-bold">Daily Mix</p> */}
+                                                            <h4 className="font-bold text-large">{dt.full_name}</h4>
+                                                            <small className="text-default-500">CVU/Alias: {dt.method}</small>
+                                                        </CardHeader>
+                                                        <CardBody className="overflow-visible py-2">
+                                                            <Image
+                                                                alt={dt.name}
+                                                                className="object-cover rounded-xl"
+                                                                src={dt.Image}
+                                                                width={270}
+                                                            />
+                                                        </CardBody>
+                                                    </Card>
+                                                )
+                                            })
+                                        }
+                                    </div>
                                 </>
                         }
                         <CreateColaborator

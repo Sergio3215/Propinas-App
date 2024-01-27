@@ -143,6 +143,18 @@ export default function SignIn() {
                         placement="bottom-center"
                         backdrop={blur}
                         scrollBehavior="inside"
+                        onClose = {() => {
+                            setAccount("");
+                            setPassword("");
+                            setConfirmPassword("");
+                            setName("");
+                            setLastName("");
+                            setEmail("");
+                            setConfirmEmail("");
+                            setSitioName("");
+                            setErrorMessage("");
+                            setType("");
+                        }}
                     >
                         <ModalContent>
                             {(onClose) => (
